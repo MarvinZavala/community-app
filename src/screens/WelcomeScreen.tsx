@@ -1,14 +1,16 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-
 interface WelcomeScreenProps {
-  onContinue?: () => void;
+  onContinue: () => void;
 }
 
 
 
 export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onContinue }) => {
+  const handleContinue = () => {
+    onContinue();
+  };
   return (
     <LinearGradient
       colors={['#F5F5DC', '#E6E6B8', '#F5F5DC']}
@@ -31,7 +33,7 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onContinue }) => {
 
       {/* Continue Button */}
       <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.continueButton} onPress={onContinue}>
+        <TouchableOpacity style={styles.continueButton} onPress={handleContinue}>
           <Text style={styles.buttonText}>Continue</Text>
         </TouchableOpacity>
       </View>
